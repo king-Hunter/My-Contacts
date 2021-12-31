@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'Daily',
+  appId: 'kh.project.contacts',
+  appName: 'Mis Contactos',
   webDir: 'www',
   bundledWebRuntime: false
 };

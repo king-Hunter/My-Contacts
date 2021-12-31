@@ -29,3 +29,8 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+.lh/.lhignore
+.lh/*
+.vs/*
+Configs.env
+key.jks

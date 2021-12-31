@@ -1,0 +1,67 @@
+<app-header [isClose]="true" [message]="messageTitle" [visibleMenu]="false" (closeResponder)="closeModal()">
+</app-header>
+<app-loader [loader]="loaderFormContact"></app-loader>
+<ion-content *ngIf="!loaderFormContact">
+  <form (ngSubmit)="saveContact(formContact)" #formContact="ngForm">
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input name="full_name" #fullName="ngModel" [(ngModel)]="contact.fullName" required type="text"
+              placeholder="ejemplo contacto nombre"></ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="fullName" message="El nombre del contacto es requerido">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Apodo</ion-label>
+            <ion-input name="nick_name" #nickName="ngModel" [(ngModel)]="contact.nickName" required type="text">
+            </ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="nickName" message="El apodo del contacto es requerido">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input id="email" name="email" required type="email" [(ngModel)]="contact.email" #email="ngModel"
+              placeholder="correo@dominio.com"></ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="email" message="El correo del contacto es requerido">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Selecciona el tipo de número</ion-label>
+            <ion-select id="type_phone" [(ngModel)]="contact.phone.type" name="phone_type" required
+              #typePhone="ngModel">
+              <ion-select-option *ngFor="let item of defaultTemeplateNumber">{{item}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <app-form-message-required [validation]="phoneNumber" message="El telefono del contacto es requerido">
+          </app-form-message-required>
+          <ion-item>
+            <ion-input id="phone" name="phone_number" [(ngModel)]="contact.phone.phone" required type="tel"
+              placeholder="2222222222" #phoneNumber="ngModel"></ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="typePhone" message="Seleccione un tipo de telefono">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-button [disabled]="formContact.invalid" type="submit" class="color-buttom-custum save-buttom"
+          expand="block" mode="md">
+          Guardar
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

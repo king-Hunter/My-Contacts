@@ -1,0 +1,42 @@
+<ion-menu side="start" content-id="main-content" *ngIf="visibleMenu">
+  <ion-header>
+    <ion-toolbar class="toolbar-reverse">
+      <ion-title class="ion-text-end"> Menu </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="content-reverse">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-button class="color-buttom-custum" expand="block" mode="md" (click)="logout()">
+          Cerrar Sesión
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="visibleMenu">
+      <ion-button (click)="menu()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{message}}</ion-title>
+    <ion-buttons slot="end" *ngIf="isClose">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="end" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="ion-page" id="main-content" *ngIf="visibleMenu">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</div>

@@ -1,0 +1,6 @@
+{
+	"appId": "kh.project.contacts",
+	"appName": "Mis Contactos",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

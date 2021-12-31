@@ -1,0 +1,34 @@
+<app-header [isClose]="false" message="Mis Contactos" [visibleMenu]="true"></app-header>
+<app-loader [loader]="loaderList" message="Cargando Contactos"></app-loader>
+<ion-content *ngIf="!loaderList" class="border-custom-content">
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="light" (click)="addContact()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <section class="exist-message" *ngIf="notExistContacts">
+        <ion-title>No tienes contactos</ion-title>
+    </section>
+    <ion-card *ngFor="let contact of listConctact">
+        <ion-header>
+            <ion-toolbar>
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-col size="6" class="ion-text-center ion-align-self-center">
+                            <ion-title>{{contact.nickName}}</ion-title>
+                        </ion-col>
+                        <ion-col class="ion-text-center" (click)="editContact(contact)">
+                            <ion-icon size="3" name="create-outline" class="eye-custom"></ion-icon>
+                        </ion-col>
+                        <ion-col class="ion-text-center" (click)="showInfo(contact)">
+                            <ion-icon size="3" name="eye" class="eye-custom"></ion-icon>
+                        </ion-col>
+                        <ion-col class="ion-text-center" (click)="deleteContact(contact)">
+                            <ion-icon size="3" name="trash" class="eye-custom"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-toolbar>
+        </ion-header>
+    </ion-card>
+</ion-content>

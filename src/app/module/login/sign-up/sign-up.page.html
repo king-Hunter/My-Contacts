@@ -1,0 +1,58 @@
+<app-header [isClose]="true" message="Crear cuenta" [visibleMenu]="false" (closeResponder)="close()"></app-header>
+<app-loader></app-loader>
+<ion-content>
+  <form (ngSubmit)="createAccount(formAccount)" #formAccount="ngForm">
+    <ion-grid class="ion-text-center space-grid">
+      <ion-row class="space-row">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input name="full_name" #name="ngModel" [(ngModel)]="user.name" required type="text"
+              placeholder="ejemplo contacto nombre"></ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="name" message="Se requiere el nonbre del usuario">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-row">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input id="email" name="email" required type="email" [(ngModel)]="user.email" #email="ngModel">
+            </ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="email" message="Se requere un correo del usuario">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-row">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input id="password" name="password" required type="password" [(ngModel)]="user.password"
+              #password="ngModel" placeholder="*********"></ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="password" message="La contraseña es requerida">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row class="space-row">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Repetir Contraseña</ion-label>
+            <ion-input id="repeat_password" name="repeat_password" required type="password"
+              [(ngModel)]="user.repeatPassword" #repeadPassword="ngModel" placeholder="*********"></ion-input>
+          </ion-item>
+          <app-form-message-required [validation]="repeadPassword" message="La contraseña es requerida">
+          </app-form-message-required>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center space-row">
+        <ion-button [disabled]="formAccount.invalid" type="submit" class="color-buttom-custum save-buttom"
+          expand="block" mode="md">
+          Guardar
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,33 @@
+<app-header [isClose]="true" [message]="messageTitle" [visibleMenu]="false" (closeResponder)="closeModal()">
+</app-header>
+<app-loader [loader]="loaderAShowContact"></app-loader>
+<ion-content fullscreen="true" class="border-custom-content" *ngIf="!loaderAShowContact">
+  <ion-grid id="p-top-3">
+    <ion-row class="ion-justify-content-center">
+      <ion-icon id="size-icon-login" class="color-icon-login font-size-icon" name="person-circle-outline"></ion-icon>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col >
+        <ion-item lines="none">
+          <ion-title class="ion-text-center">{{contact.fullName}}</ion-title>
+        </ion-item>
+      </ion-col>
+      <ion-col size="10">
+        <ion-item lines="none">
+          <ion-label>Apodo</ion-label>
+          <ion-title class="ion-text-center">{{contact.nickName}}</ion-title>
+        </ion-item>
+      </ion-col>
+      <ion-col >
+        <ion-item lines="none">
+          <ion-title class="ion-text-center">{{contact.email}}</ion-title>
+        </ion-item>
+      </ion-col>
+      <ion-col >
+        <ion-item lines="none">
+          <ion-title class="ion-text-center">{{contact.phone.type}} : {{contact.phone.phone}}</ion-title>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

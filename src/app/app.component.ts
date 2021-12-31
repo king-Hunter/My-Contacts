@@ -1,3 +1,4 @@
+import { LoginService } from './module/login/service/login.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private loginService: LoginService) {
+    this.initUser();
+  }
+
+  public async initUser() {
+    await this.loginService.setDefaultUser();
+  }
 }
